@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('clone') {
+            steps {
+                git branch: 'main', credentialsId: 'ea83e909-8af6-4854-8670-3e36fc3de48d', url: 'https://github.com/Tirtha2009/exp3.git'
+            }
+        }
+    stage('compile') {
+            steps {
+                bat 'javac HelloWorld.java'
+            }
+        }
+    stage('run') {
+            steps {
+                bat 'java HelloWorld'
+            }
+        }
+    }
+}
